@@ -50,9 +50,12 @@ class Blackjack(object):
             return 11
         else:
             while True:
-                x = input("choose your ace as 1 or 11:")
-                if type(int(x)) == int and (int(x) == 1 or int(x) == 11):
-                    return int(x)
+                x = input("choose your ace as X(1) or Y(11):")
+                if x == 'X':
+                    return 1
+                    break
+                elif x == 'Y':
+                    return 11
                     break
 
     def counting(self, name):
@@ -80,8 +83,11 @@ class Blackjack(object):
         player = self.counting(name)
         dealer = self.counting('dealer')
         print("hidden_card is",self.hidden_card)
+        if dealer > 21 and player <= 21:
+            self.result['win'] += 1
+            print("#######Dealer Burst! You Win#######")
 
-        if (21 - dealer) > (21 - player):
+        elif (21 - dealer) > (21 - player):
             self.result['win'] += 1
             print("Dealer:{} You: {}\n#######You Win#######".format(self._sum['dealer'],self._sum[name]))
         elif (21 - dealer) < (21 - player):
@@ -91,9 +97,7 @@ class Blackjack(object):
             self.result['draw'] += 1
             print("Dealer:{} You: {}\n########Draw########".format(self._sum['dealer'],self._sum[name]))
 
-        elif dealer > 21 and player <= 21:
-            self.result['win'] += 1
-            print("#######Dealer Burst! You Win#######")
+
 
     def betting(self,name):
         player = self.counting(name)
