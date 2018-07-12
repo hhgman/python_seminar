@@ -5,18 +5,8 @@ nextGame = True
 count = 0
 
 class Blackjack(object):
-    cardDeck = [
-        'A', 'A', 'A', 'A', 2, 2, 2, 2,
-        3, 3, 3, 3, 4, 4, 4, 4,
-        5, 5, 5, 5, 6, 6, 6, 6,
-        7, 7, 7, 7, 8, 8, 8, 8,
-        9, 9, 9, 9, 10, 10, 10, 10,
-        'J', 'J', 'J', 'J', 'Q', 'Q', 'Q', 'Q',
-        'K', 'K', 'K', 'K'
-    ]
 
     result = {'win': 0, 'lose': 0, 'draw': 0}
-
     def drawing(self):
         if self.cardDeck:
             x = random.choice(self.cardDeck)
@@ -26,6 +16,17 @@ class Blackjack(object):
             print('There \'s no card left')
 
     def __init__(self, name):
+
+        self.cardDeck = [
+            'A', 'A', 'A', 'A', 2, 2, 2, 2,
+            3, 3, 3, 3, 4, 4, 4, 4,
+            5, 5, 5, 5, 6, 6, 6, 6,
+            7, 7, 7, 7, 8, 8, 8, 8,
+            9, 9, 9, 9, 10, 10, 10, 10,
+            'J', 'J', 'J', 'J', 'Q', 'Q', 'Q', 'Q',
+            'K', 'K', 'K', 'K'
+        ]
+        print(len(self.cardDeck))
         self._deck = {}
         self._deck[name] = []
         self._deck['dealer'] = []
@@ -56,6 +57,7 @@ class Blackjack(object):
                     break
                 elif x == 'Y':
                     return 11
+
                     break
 
     def counting(self, name):
